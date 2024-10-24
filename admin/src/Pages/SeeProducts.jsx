@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect,useState } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import axiosInstance from '../axios/axios'
 const SeeProducts = () => {
 
     const [seeProducts, setseeProducts] = useState([])
@@ -10,8 +11,8 @@ const SeeProducts = () => {
         const allProducts = async ()=>{
 
             try {
-                const response = await axios.get(
-                  `http://localhost:3000/api/getproduct`
+                const response = await axiosInstance.get(
+                  `/getproduct`
                 );
                 setseeProducts(response.data)
             } catch (error) {
@@ -23,7 +24,7 @@ const SeeProducts = () => {
     },[])
 
     const deleteProduct =async (pid)=>{
-        const deleteProduct = await axios.delete(`http://localhost:3000/api/deleteproduct/${pid}`);
+        const deleteProduct = await axiosInstance.delete(`deleteproduct/${pid}`);
         setseeProducts(seeProducts.filter((product) => product.pid !== pid));
     }
 

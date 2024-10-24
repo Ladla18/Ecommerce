@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios"
+import axiosInstance from "../axios/axios";
 const AddProduct = () => {
   const [formData, setformData] = useState({
     pname: "",
@@ -41,8 +42,8 @@ const [error,seterror] = useState("")
     
     
     try {
-      const response = await axios.post(
-        `http://localhost:3000/api/addproduct`,
+      const response = await axiosInstance.post(
+        'addproduct',
         formData,
         {
           headers: {

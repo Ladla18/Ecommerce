@@ -7,15 +7,13 @@ import Testimonials from "../components/Testimonials";
 import DeliverReturn from "../components/Deliver&Return";
 import Locat from "../components/Locat";
 import Footer from "../components/Footer";
-import axios from "axios";
+import axiosInstance from "../axios/axios";
 const Home = () => {
   const [productDetail, setProductDetail] = useState([]);
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/api/getproduct`
-        );
+        const response = await axiosInstance.get("getproduct")
         setProductDetail(response.data);
         console.log(response.data);
       } catch (error) {

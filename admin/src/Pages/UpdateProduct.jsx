@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import axiosInstance from "../axios/axios";
 
 const UpdateProduct = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +16,8 @@ const UpdateProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/api/getproductbyid/${param.pid}`
+        const response = await axiosInstance.get(
+          `/getproductbyid/${param.pid}`
         );
         setFormData(response.data);
       } catch (error) {
