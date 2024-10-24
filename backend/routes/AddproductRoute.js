@@ -32,5 +32,11 @@ router.post(
 );
 
 router.get("/getproduct",productController.getProduct)
-
+router.delete("/deleteproduct/:pid",productController.deleteProduct)
+router.get("/getproductbyid/:pid",productController.getproductbyid);
+router.put(
+  "/update/:pid",
+  parser.single("pimage"),
+  productController.updateProduct
+);
 module.exports = router;
